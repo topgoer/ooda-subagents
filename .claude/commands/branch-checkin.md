@@ -3,11 +3,16 @@ Execute GitHub branch check-in workflow: $ARGUMENTS
 This command implements an adaptive intelligence approach to branch check-in, with selective OODA integration for complex scenarios.
 
 **Command Usage:**
-- `/branch-checkin` - Smart check-in with automatic branch detection
-- `/branch-checkin "commit message"` - Check-in with custom commit message  
-- `/branch-checkin branch-name "commit message"` - Check-in to specific branch
-- `/branch-checkin --ooda` - Force OODA methodology for complex scenarios
-- `/branch-checkin --push` - Include push to remote repository
+- `/project:branch-checkin` - Smart check-in on current branch with auto-generated message
+- `/project:branch-checkin "commit message"` - Check-in current branch with custom message  
+- `/project:branch-checkin branch-name "commit message"` - Create/switch to branch and commit
+- `/project:branch-checkin branch-name "message" --push` - Commit and push to remote
+- `/project:branch-checkin --ooda` - Force full OODA analysis for complex scenarios
+
+**Push Behavior (IMPORTANT):**
+- **Default**: Commits locally only (safe for development)
+- **With --push**: Commits locally AND pushes to remote repository
+- **Manual push**: Use `git push -u origin branch-name` after command completes
 
 **Adaptive Intelligence Workflow:**
 
@@ -69,11 +74,10 @@ This command implements an adaptive intelligence approach to branch check-in, wi
    - Ensure documentation is updated for significant changes
 
 10. **GitHub Integration:**
-    - Push changes to remote repository (if --push flag used)
-    - Create or update pull request with comprehensive description
-    - Apply appropriate labels and assign reviewers
-    - Link related issues and set milestones
-    - Add automated checks and required reviews
+    - Push changes to remote repository (ONLY if --push flag used)
+    - If pushing, setup upstream tracking automatically
+    - Provide GitHub PR creation link after successful push
+    - Note: PR creation is manual step via GitHub CLI or web interface
 
 11. **Monitoring and Feedback:**
     - Set up branch protection rules if needed

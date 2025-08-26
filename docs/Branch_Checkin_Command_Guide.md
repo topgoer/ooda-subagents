@@ -4,7 +4,7 @@ A comprehensive guide to the Adaptive Intelligence GitHub branch check-in slash 
 
 ## Overview
 
-The `/branch-checkin` command represents a sophisticated implementation of the OODA Loop methodology, providing adaptive intelligence that scales from simple operations to complex scenarios requiring systematic analysis and decision-making.
+The `/project:branch-checkin` command represents a sophisticated implementation of the OODA Loop methodology, providing adaptive intelligence that scales from simple operations to complex scenarios requiring systematic analysis and decision-making.
 
 ### Key Features
 
@@ -19,22 +19,62 @@ The `/branch-checkin` command represents a sophisticated implementation of the O
 ### Basic Usage
 ```bash
 # Automatic branch detection and smart commit
-/branch-checkin
+/project:branch-checkin
 
 # Custom commit message with semantic formatting
-/branch-checkin "feat: add user authentication system"
+/project:branch-checkin "feat: add user authentication system"
 
 # Specific branch with custom message
-/branch-checkin feature/user-auth "feat: implement OAuth2 integration"
-
-# Force OODA methodology for learning purposes
-/branch-checkin --ooda "refactor: restructure data layer"
+/project:branch-checkin feature/user-auth "feat: implement OAuth2 integration"
 
 # Include push to remote repository
-/branch-checkin --push "fix: resolve memory leak in data processing"
+/project:branch-checkin feature/user-auth "feat: implement OAuth2" --push
+
+# Force OODA methodology for learning purposes
+/project:branch-checkin --ooda "refactor: restructure data layer"
+```
+
+### Push Behavior (IMPORTANT)
+```bash
+# DEFAULT: Local commit only (safe for development)
+/project:branch-checkin "feat: add new feature"
+# Result: Creates commit locally, NO push to remote
+
+# WITH --push: Commit AND push to remote
+/project:branch-checkin "feat: add new feature" --push
+# Result: Creates commit + pushes to remote + sets up tracking
+
+# Manual push after command (alternative)
+/project:branch-checkin "feat: add new feature"
+git push -u origin branch-name
 
 # Combine flags for maximum control
-/branch-checkin --ooda --push "feat!: migrate to new API version"
+/project:branch-checkin --ooda --push "feat!: migrate to new API version"
+```
+
+### Real-World Usage Examples
+
+#### Example 1: Development Workflow (Local Only)
+```bash
+# Working on a feature - commit locally for safety
+/project:branch-checkin feature/user-profile "feat: add user profile editing"
+# Result: Branch created, commit made locally, ready for more work
+# Next: Continue development, test locally, then push when ready
+```
+
+#### Example 2: Feature Completion (Push to Remote)
+```bash
+# Feature ready for review - commit and push
+/project:branch-checkin feature/user-profile "feat: complete user profile system" --push
+# Result: Commit created + pushed to remote + tracking setup
+# GitHub shows: "Create a pull request for 'feature/user-profile'"
+```
+
+#### Example 3: Hotfix (OODA + Push)
+```bash
+# Critical bug fix - use full analysis
+/project:branch-checkin hotfix/payment-bug "fix: resolve payment timeout issue" --ooda --push
+# Result: Full OODA analysis + commit + push + comprehensive validation
 ```
 
 ### Advanced Options

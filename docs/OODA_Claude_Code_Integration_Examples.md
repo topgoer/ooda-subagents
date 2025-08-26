@@ -52,15 +52,15 @@ The command uses intelligent triggers to determine the appropriate level of syst
 
 ```bash
 # Simple scenario - Direct execution
-/branch-checkin "docs: fix typo in README"
+/project:branch-checkin "docs: fix typo in README"
 # Output: ✓ Simple scenario detected - executing direct workflow (3.2s)
 
 # Complex scenario - OODA activation  
-/branch-checkin "feat: implement real-time notification system"
+/project:branch-checkin "feat: implement real-time notification system"
 # Output: ⚠️ Complex scenario detected - activating OODA methodology
 
 # Critical scenario - Full validation
-/branch-checkin "feat!: migrate to new payment API"  
+/project:branch-checkin "feat!: migrate to new payment API"  
 # Output: 🔴 Critical scenario detected - full OODA with enhanced validation
 ```
 
@@ -245,7 +245,7 @@ LEARNING PHASE - Continuous Improvement:
 
 **Simple Scenario - Documentation Update**
 ```bash
-/branch-checkin "docs: update installation instructions"
+/project:branch-checkin "docs: update installation instructions"
 
 # Automatic assessment: Simple scenario detected
 # Execution: Direct workflow (5-10 seconds)
@@ -254,7 +254,7 @@ LEARNING PHASE - Continuous Improvement:
 
 **Complex Scenario - Feature Implementation**  
 ```bash
-/branch-checkin "feat: add user authentication with OAuth2"
+/project:branch-checkin "feat: add user authentication with OAuth2"
 
 # Automatic assessment: Complex scenario detected  
 # OODA activation: Orient and Decide phases engaged
@@ -263,7 +263,7 @@ LEARNING PHASE - Continuous Improvement:
 
 **Critical Scenario - Production Hotfix**
 ```bash
-/branch-checkin "hotfix: resolve payment processing memory leak"
+/project:branch-checkin "hotfix: resolve payment processing memory leak"
 
 # Automatic assessment: Critical scenario detected
 # Full OODA: All phases with enhanced validation
@@ -272,7 +272,7 @@ LEARNING PHASE - Continuous Improvement:
 
 **Learning Mode - Educational Usage**
 ```bash
-/branch-checkin --ooda "chore: update package dependencies"
+/project:branch-checkin --ooda "chore: update package dependencies"
 
 # Forced OODA: Full methodology on simple change
 # Educational value: Demonstrates systematic thinking
@@ -283,7 +283,7 @@ LEARNING PHASE - Continuous Improvement:
 
 **Team Configuration Example**
 ```javascript
-// .claude/branch-checkin.config.js
+// .claude/project:branch-checkin.config.js
 module.exports = {
   complexity: {
     simple: { maxFiles: 5, fileTypes: ['.md', '.json'] },
